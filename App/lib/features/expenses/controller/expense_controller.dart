@@ -14,6 +14,11 @@ final expenseControllerProvider =
   return ExpenseController(expenseRepository: expenseRepository, ref: ref);
 });
 
+final userExpensesProvider = StreamProvider((ref) {
+  final expenseController = ref.watch(expenseControllerProvider.notifier);
+  return expenseController.getUserExpenses();
+});
+
 class ExpenseController extends StateNotifier<bool> {
   final ExpenseRepository _expenseRepository;
   final Ref _ref;
@@ -39,5 +44,10 @@ class ExpenseController extends StateNotifier<bool> {
     res.fold((l) => showSnackBar(context, l.message), (r) {
       showSnackBar(context, 'Your Expense "$title" Added Successfully!');
     });
+  }
+
+  Stream<List<Expense>> getUserExpenses() {
+    final uid = _ref.read(userProvider)!.email;
+    return _expenseRepository.getUserExpenses(uid);
   }
 }

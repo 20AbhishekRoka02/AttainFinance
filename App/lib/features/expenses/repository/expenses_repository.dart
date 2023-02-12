@@ -35,6 +35,20 @@ class ExpenseRepository {
     }
   }
 
+  Stream<List<Expense>> getUserExpenses(String uid) {
+    return _users
+        .doc(uid)
+        .collection(FirebaseConstants.expensesCollection.toString())
+        .snapshots()
+        .map((event) {
+      List<Expense> expenses = [];
+      for (var doc in event.docs) {
+        expenses.add(Expense.fromMap(doc.data() as Map<String, dynamic>));
+      }
+      return expenses;
+    });
+  }
+
   CollectionReference get _users =>
       _firestore.collection(FirebaseConstants.usersCollection);
 }

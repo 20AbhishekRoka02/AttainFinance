@@ -47,75 +47,78 @@ class _NewExpenseState extends ConsumerState<ConsumerStatefulWidget> {
     return Form(
       key: formKey1,
       child: Scaffold(
-        body: SingleChildScrollView(
-          physics: const ClampingScrollPhysics(),
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          reverse: true,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Title can't be left empty.";
-                  }
-                  return null;
-                },
-                controller: titleController,
-                decoration: textFormDecoration.copyWith(
-                  labelText: 'Title',
-                  hintText: 'Expense Name',
+        body: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: SingleChildScrollView(
+            physics: const ClampingScrollPhysics(),
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+            reverse: true,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Title can't be left empty.";
+                    }
+                    return null;
+                  },
+                  controller: titleController,
+                  decoration: textFormDecoration.copyWith(
+                    labelText: 'Title',
+                    hintText: 'Expense Name',
+                  ),
+                  maxLength: 40,
                 ),
-                maxLength: 40,
-              ),
-              TextFormField(
-                controller: descriptionController,
-                decoration: textFormDecoration.copyWith(
-                  labelText: 'Description',
-                  hintText: 'Enter the Description',
+                TextFormField(
+                  controller: descriptionController,
+                  decoration: textFormDecoration.copyWith(
+                    labelText: 'Description',
+                    hintText: 'Enter the Description',
+                  ),
+                  maxLines: 4,
                 ),
-                maxLines: 4,
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Cost can't be left empty.";
-                  }
-                  return null;
-                },
-                controller: costController,
-                keyboardType: TextInputType.number,
-                decoration: textFormDecoration.copyWith(
-                  labelText: 'Cost',
-                  hintText: 'Expense Cost in INR',
+                const SizedBox(height: 20),
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Cost can't be left empty.";
+                    }
+                    return null;
+                  },
+                  controller: costController,
+                  keyboardType: TextInputType.number,
+                  decoration: textFormDecoration.copyWith(
+                    labelText: 'Cost',
+                    hintText: 'Expense Cost in INR',
+                  ),
                 ),
-              ),
-              isLoading
-                  ? const Loader()
-                  : Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 30),
-                      child: Material(
-                        color: Colors.purple,
-                        borderRadius: BorderRadius.circular(25),
-                        child: MaterialButton(
-                          minWidth: double.infinity,
-                          onPressed: () {
-                            if (formKey1.currentState!.validate()) {
-                              addExpense();
-                            }
-                          },
-                          child: const Text(
-                            'Add',
-                            style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
+                isLoading
+                    ? const Loader()
+                    : Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 30),
+                        child: Material(
+                          color: Colors.purple,
+                          borderRadius: BorderRadius.circular(25),
+                          child: MaterialButton(
+                            minWidth: double.infinity,
+                            onPressed: () {
+                              if (formKey1.currentState!.validate()) {
+                                addExpense();
+                              }
+                            },
+                            child: const Text(
+                              'Add',
+                              style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
