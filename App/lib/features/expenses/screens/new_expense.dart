@@ -23,9 +23,14 @@ class _NewExpenseState extends ConsumerState<ConsumerStatefulWidget> {
     ref.read(expenseControllerProvider.notifier).addExpense(
           titleController.text,
           descriptionController.text,
-          costController.value as double,
+          double.parse(costController.text),
           context,
         );
+    setState(() {
+      titleController.text = '';
+      descriptionController.text = '';
+      costController.text = '';
+    });
   }
 
   @override

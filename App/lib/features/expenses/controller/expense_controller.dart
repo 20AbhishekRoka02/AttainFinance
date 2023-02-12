@@ -37,7 +37,7 @@ class ExpenseController extends StateNotifier<bool> {
     final res = await _expenseRepository.addExpense(expense);
     state = false;
     res.fold((l) => showSnackBar(context, l.message), (r) {
-      showSnackBar(context, 'Your Community "$title" Added Successfully!');
+      showSnackBar(context, 'Your Expense "$title" Added Successfully!');
     });
   }
 }

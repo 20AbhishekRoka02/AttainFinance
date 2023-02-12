@@ -19,12 +19,15 @@ class ExpenseRepository {
 
   FutureVoid addExpense(Expense expense) async {
     try {
-      var format = DateFormat('yyyy-MM-dd'); // <- use skeleton here
-      return right(_users
-          .doc(expense.useremail)
-          .collection(FirebaseConstants.expensesCollection.toString())
-          .doc(format.format(expense.createdAt.toDate()).toString())
-          .set(expense.toMap()));
+      return right(
+        _users
+            .doc(expense.useremail)
+            .collection(FirebaseConstants.expensesCollection.toString())
+            .doc(expense.createdAt.toDate().toString())
+            .set(
+              expense.toMap(),
+            ),
+      );
     } on FirebaseException catch (e) {
       throw e.message!;
     } catch (e) {
