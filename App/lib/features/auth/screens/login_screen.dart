@@ -6,35 +6,36 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          const SizedBox(height: 10),
-          const Column(
+    return SafeArea(
+      child: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
+              const Text(
                 "AttainFinance",
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 34),
               ),
-              SizedBox(height: 10),
-              CircleAvatar(
-                radius: 40,
+              const SizedBox(height: 10),
+              const CircleAvatar(
+                radius: 100,
+                backgroundColor: Colors.transparent,
+                backgroundImage: AssetImage('assets/logo.png'),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 "'Track Save Grow'",
                 style: TextStyle(color: Colors.white, fontSize: 18),
               ),
+              SignInButton(),
             ],
           ),
-          SignInButton(),
-        ],
+        ),
       ),
     );
   }
