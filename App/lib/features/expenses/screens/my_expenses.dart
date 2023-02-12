@@ -1,4 +1,5 @@
 import 'package:attainfinance/features/expenses/controller/expense_controller.dart';
+import 'package:attainfinance/features/expenses/widgets/expense_overview_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -13,11 +14,13 @@ class MyExpenses extends ConsumerWidget {
     return ref.watch(userExpensesProvider).when(
         data: (expenses) => ListView.builder(
             itemCount: expenses.length,
+            physics: const BouncingScrollPhysics(),
             itemBuilder: (BuildContext context, int index) {
               final expense = expenses[index];
-              return ListTile(
-                title: Text(expense.name),
-                subtitle: Text(expense.description),
+              return ExpenseOverviewCard(
+                title: expense.name,
+                description: expense.description,
+                createdAt: expense.createdAt,
                 onTap: () {},
               );
             }),

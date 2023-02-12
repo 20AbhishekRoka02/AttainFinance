@@ -39,6 +39,7 @@ class ExpenseRepository {
     return _users
         .doc(uid)
         .collection(FirebaseConstants.expensesCollection.toString())
+        .orderBy('createdAt', descending: true)
         .snapshots()
         .map((event) {
       List<Expense> expenses = [];

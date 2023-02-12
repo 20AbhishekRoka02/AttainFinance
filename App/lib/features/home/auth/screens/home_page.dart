@@ -21,6 +21,10 @@ class _HomePageState extends ConsumerState<HomePage> {
     });
   }
 
+  void logOut(WidgetRef ref) {
+    ref.read(authControllerProvider.notifier).logout();
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(userProvider)!;
@@ -30,6 +34,12 @@ class _HomePageState extends ConsumerState<HomePage> {
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(user.name),
+        actions: [
+          IconButton(
+            onPressed: () => logOut(ref),
+            icon: const Icon(Icons.logout),
+          ),
+        ],
       ),
       body: Constants.tabWidgets[_page],
       bottomNavigationBar: CupertinoTabBar(

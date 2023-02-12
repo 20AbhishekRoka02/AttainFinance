@@ -55,6 +55,9 @@ class _MyAppState extends ConsumerState<MyApp> {
               brightness: Brightness.light,
               appBarTheme: const AppBarTheme(
                 centerTitle: true,
+                actionsIconTheme: IconThemeData(
+                  color: Colors.black54,
+                ),
                 titleTextStyle: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
