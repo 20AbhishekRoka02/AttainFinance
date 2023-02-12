@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "104549358224",
+    "project_id": "attainfinance",
+    "storage_bucket": "attainfinance.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:104549358224:android:3c8fe6c850bd9c46a79615",
+        "android_client_info": {
+          "package_name": "com.example.attainfinance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "104549358224-0h6oe2h6nlvaukos9nscdtk287fmlph5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwqhejWD4LjomoD17gg6y1czZ1wG7dvGI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "104549358224-0h6oe2h6nlvaukos9nscdtk287fmlph5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
